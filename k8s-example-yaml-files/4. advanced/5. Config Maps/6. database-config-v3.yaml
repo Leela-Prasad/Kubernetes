@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: global-database-config-v3
+  namespace: default
+data:
+  DATABASE_URL: "https://mydatabaseserver.somewhere.com:3306"
+  DATABASE_PASSWORD: "P@ssw0rd1"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: global-database-config-v3
+  namespace: default
+data:
+  # Here | will allow us to specify value in multiple lines.
+  database.properties: |
+    database.url=https://mydatabaseserver.somewhere.com:3306
+    database.password=P@ssw0rd1

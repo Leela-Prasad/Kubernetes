@@ -1,0 +1,39 @@
+[ec2-user@ip-172-31-19-100 ~]$ kops update cluster --name ${NAME} --yes
+I0204 03:15:36.375410    3440 apply_cluster.go:556] Gossip DNS: skipping DNS validation
+I0204 03:15:36.585113    3440 executor.go:103] Tasks: 0 done / 95 total; 43 can run
+I0204 03:15:37.955072    3440 vfs_castore.go:729] Issuing new certificate: "apiserver-aggregator-ca"
+I0204 03:15:38.372036    3440 vfs_castore.go:729] Issuing new certificate: "etcd-clients-ca"
+I0204 03:15:38.668745    3440 vfs_castore.go:729] Issuing new certificate: "etcd-peers-ca-events"
+I0204 03:15:38.704415    3440 vfs_castore.go:729] Issuing new certificate: "etcd-peers-ca-main"
+I0204 03:15:39.123606    3440 vfs_castore.go:729] Issuing new certificate: "etcd-manager-ca-events"
+I0204 03:15:39.283667    3440 vfs_castore.go:729] Issuing new certificate: "ca"
+I0204 03:15:39.296349    3440 vfs_castore.go:729] Issuing new certificate: "etcd-manager-ca-main"
+I0204 03:15:39.445355    3440 executor.go:103] Tasks: 43 done / 95 total; 26 can run
+I0204 03:15:40.920551    3440 vfs_castore.go:729] Issuing new certificate: "kubecfg"
+I0204 03:15:40.935781    3440 vfs_castore.go:729] Issuing new certificate: "kops"
+I0204 03:15:41.232614    3440 vfs_castore.go:729] Issuing new certificate: "apiserver-aggregator"
+I0204 03:15:41.254524    3440 vfs_castore.go:729] Issuing new certificate: "kubelet"
+I0204 03:15:41.486836    3440 vfs_castore.go:729] Issuing new certificate: "kube-scheduler"
+I0204 03:15:41.897783    3440 vfs_castore.go:729] Issuing new certificate: "kube-proxy"
+I0204 03:15:41.909647    3440 vfs_castore.go:729] Issuing new certificate: "kube-controller-manager"
+I0204 03:15:42.171976    3440 vfs_castore.go:729] Issuing new certificate: "apiserver-proxy-client"
+I0204 03:15:42.253190    3440 vfs_castore.go:729] Issuing new certificate: "kubelet-api"
+I0204 03:15:42.390742    3440 executor.go:103] Tasks: 69 done / 95 total; 22 can run
+I0204 03:15:42.568956    3440 launchconfiguration.go:364] waiting for IAM instance profile "masters.fleetman.k8s.local" to be ready
+I0204 03:15:42.578236    3440 launchconfiguration.go:364] waiting for IAM instance profile "nodes.fleetman.k8s.local" to be ready
+I0204 03:15:52.887908    3440 executor.go:103] Tasks: 91 done / 95 total; 3 can run
+I0204 03:15:53.459850    3440 vfs_castore.go:729] Issuing new certificate: "master"
+I0204 03:15:53.634394    3440 executor.go:103] Tasks: 94 done / 95 total; 1 can run
+I0204 03:15:53.931068    3440 executor.go:103] Tasks: 95 done / 95 total; 0 can run
+I0204 03:15:54.011478    3440 update_cluster.go:305] Exporting kubecfg for cluster
+kops has set your kubectl context to fleetman.k8s.local
+
+Cluster is starting.  It should be ready in a few minutes.
+
+Suggestions:
+ * validate cluster: kops validate cluster
+ * list nodes: kubectl get nodes --show-labels
+ * ssh to the master: ssh -i ~/.ssh/id_rsa admin@api.fleetman.k8s.local
+ * the admin user is specific to Debian. If not using Debian please use the appropriate user based on your OS.
+ * read about installing addons at: https://github.com/kubernetes/kops/blob/master/docs/addons.md.
+

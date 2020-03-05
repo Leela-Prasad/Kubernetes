@@ -1,0 +1,23 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: new-joiner
+  namespace: default
+rules:
+  - apiGroups: ["", "apps"] # empty represents access to resources that are having apiVersion as v1 this is also referred as core group
+    resources: ["*"] # * means all K8S resources like pods, services, deployments etc
+    verbs: ["get", "list", "watch"] # actions that user can perform on the resources.
+
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: put-specific-user-or-users-into-new-joiner-role
+  namespace: default
+subjects:
+  - kind: User
+    name: francis-linux-login-name
+roleRef:
+  kind: Role
+  name: new-joiner
+  apiGroup: rbac.authorization.k8s.io

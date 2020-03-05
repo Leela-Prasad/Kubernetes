@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+spec:
+  selector:
+    matchLabels:
+      app: mongodb
+  replicas: 1
+  template: 
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo:3.6.5-jessie
+
+        volumeMounts:
+          - name: mongo-persistent-storage
+            mountPath: /data/db
+        resources:
+          requests:
+            memory: 200Mi
+            cpu: 50m
+
+      volumes:
+        - name: mongo-persistent-storage
+          # pointer to the configuration of HOW we want to mount to be implemented(i.e., either host machine or AWS Elasic Block or Azure file etc)
+          # Generally it is best pratice to externalize mount details outside of spec files
+          # because if we want to change mount information then it can changed at one spot
+          persistentVolumeClaim:
+            claimName: mongo-pvc
+
+
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-mongodb
+spec:
+  selector:
+    app: mongodb
+
+  ports:
+    - name: mongoport
+      port: 27017
+
+  type: ClusterIP

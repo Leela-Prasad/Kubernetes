@@ -1,0 +1,43 @@
+# What do we want?
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-pvc
+spec:
+  # Linking of Specification and Implementation of Persistent Volume 
+  # happens via storageClassName.
+  #
+  # What happens is at run time k8s will search in the cluster for a Persistent Volume with  
+  # same storageClassName, access Mode and a storage which can PROVIDE 
+  # atleast mentioned amount of memory (in this case it is 1Gi) and establish 
+  # linkage between PersistentVolumeClaim and PersistentVolume. This Linking 
+  # process is called BINDING.
+  #
+  # This will allow k8s administrator can have multiple mounts like HDD, SSD but 
+  # at runtime a matching storageClassName, accessModes and Storage Availability will
+  # acquire the Link.
+  #
+  # This is the Reason why Implementation storage should be Greater than or Equal to 
+  # Specification Storage otherwise Linkage will not establish.
+  storageClassName: mylocalstorage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+# How do we want it implemented?
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-storage
+spec:
+  storageClassName: mylocalstorage
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /mongo/pvc/directory
+    type: DirectoryOrCreate

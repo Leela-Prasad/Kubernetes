@@ -1,0 +1,166 @@
+[ec2-user@ip-172-31-19-100 ~]$ kops delete cluster --name ${NAME} --yes
+TYPE			NAME										ID
+autoscaling-config	master-ap-south-1a.masters.fleetman.k8s.local-20200204031542			master-ap-south-1a.masters.fleetman.k8s.local-20200204031542
+autoscaling-config	nodes.fleetman.k8s.local-20200204031542						nodes.fleetman.k8s.local-20200204031542
+autoscaling-group	master-ap-south-1a.masters.fleetman.k8s.local					master-ap-south-1a.masters.fleetman.k8s.local
+autoscaling-group	nodes.fleetman.k8s.local							nodes.fleetman.k8s.local
+dhcp-options		fleetman.k8s.local								dopt-0fd6627e4641806e4
+iam-instance-profile	masters.fleetman.k8s.local							masters.fleetman.k8s.local
+iam-instance-profile	nodes.fleetman.k8s.local							nodes.fleetman.k8s.local
+iam-role		masters.fleetman.k8s.local							masters.fleetman.k8s.local
+iam-role		nodes.fleetman.k8s.local							nodes.fleetman.k8s.local
+instance		master-ap-south-1a.masters.fleetman.k8s.local					i-0018eee3bf427fdef
+instance		nodes.fleetman.k8s.local							i-05b592a84654da82b
+instance		nodes.fleetman.k8s.local							i-07efb663ce420bea5
+instance		nodes.fleetman.k8s.local							i-0dd4726834c9302e0
+internet-gateway	fleetman.k8s.local								igw-07bda0d446a6f68ec
+keypair			kubernetes.fleetman.k8s.local-4c:85:15:40:fd:07:fc:9f:f2:d9:aa:6f:19:57:e6:d0	kubernetes.fleetman.k8s.local-4c:85:15:40:fd:07:fc:9f:f2:d9:aa:6f:19:57:e6:d0
+load-balancer												a49582442c3174800b4bad8f0001522b
+load-balancer												a8917880a154b465fa238a84a6a3826b
+load-balancer		api.fleetman.k8s.local								api-fleetman-k8s-local-tkmafs
+route-table		fleetman.k8s.local								rtb-06b94b62937ac7ccb
+security-group												sg-059df88f8e6ef2e8c
+security-group												sg-0c4427fbea14127a7
+security-group		api-elb.fleetman.k8s.local							sg-00c654becf3acd444
+security-group		masters.fleetman.k8s.local							sg-0c33565506135af54
+security-group		nodes.fleetman.k8s.local							sg-0fafd04c89eebe360
+subnet			ap-south-1a.fleetman.k8s.local							subnet-0bcdd55cb1a12f92c
+subnet			ap-south-1b.fleetman.k8s.local							subnet-0f2084ccf58c139ef
+subnet			ap-south-1c.fleetman.k8s.local							subnet-045956f002184aebc
+volume			a.etcd-events.fleetman.k8s.local						vol-03391d87d30c7ab0f
+volume			a.etcd-main.fleetman.k8s.local							vol-009c63fc155a2c0c0
+volume			fleetman.k8s.local-dynamic-pvc-7e4036d9-c367-4503-9144-3176692dbd1d		vol-000fafdba7df320a5
+volume			fleetman.k8s.local-dynamic-pvc-9879e803-b32c-44ad-bc87-0f6c3b31e186		vol-000a8edf8b3a00efd
+volume			fleetman.k8s.local-dynamic-pvc-d885a805-03d1-4da6-b44a-d3cc1b188ff1		vol-0ee52bf1d8fd85e77
+vpc			fleetman.k8s.local								vpc-0328f2e37ee84f423
+
+load-balancer:api-fleetman-k8s-local-tkmafs	ok
+keypair:kubernetes.fleetman.k8s.local-4c:85:15:40:fd:07:fc:9f:f2:d9:aa:6f:19:57:e6:d0	ok
+load-balancer:a49582442c3174800b4bad8f0001522b	ok
+load-balancer:a8917880a154b465fa238a84a6a3826b	ok
+instance:i-07efb663ce420bea5	ok
+internet-gateway:igw-07bda0d446a6f68ec	still has dependencies, will retry
+instance:i-05b592a84654da82b	ok
+instance:i-0dd4726834c9302e0	ok
+autoscaling-group:nodes.fleetman.k8s.local	ok
+instance:i-0018eee3bf427fdef	ok
+autoscaling-group:master-ap-south-1a.masters.fleetman.k8s.local	ok
+iam-instance-profile:nodes.fleetman.k8s.local	ok
+iam-instance-profile:masters.fleetman.k8s.local	ok
+iam-role:masters.fleetman.k8s.local	ok
+iam-role:nodes.fleetman.k8s.local	ok
+subnet:subnet-045956f002184aebc	still has dependencies, will retry
+volume:vol-000a8edf8b3a00efd	still has dependencies, will retry
+volume:vol-009c63fc155a2c0c0	still has dependencies, will retry
+volume:vol-03391d87d30c7ab0f	still has dependencies, will retry
+volume:vol-0ee52bf1d8fd85e77	still has dependencies, will retry
+volume:vol-000fafdba7df320a5	still has dependencies, will retry
+subnet:subnet-0f2084ccf58c139ef	still has dependencies, will retry
+subnet:subnet-0bcdd55cb1a12f92c	still has dependencies, will retry
+autoscaling-config:nodes.fleetman.k8s.local-20200204031542	ok
+autoscaling-config:master-ap-south-1a.masters.fleetman.k8s.local-20200204031542	ok
+security-group:sg-059df88f8e6ef2e8c	still has dependencies, will retry
+security-group:sg-0c4427fbea14127a7	still has dependencies, will retry
+security-group:sg-0fafd04c89eebe360	still has dependencies, will retry
+security-group:sg-00c654becf3acd444	still has dependencies, will retry
+security-group:sg-0c33565506135af54	still has dependencies, will retry
+Not all resources deleted; waiting before reattempting deletion
+	volume:vol-0ee52bf1d8fd85e77
+	security-group:sg-0c4427fbea14127a7
+	dhcp-options:dopt-0fd6627e4641806e4
+	volume:vol-000fafdba7df320a5
+	vpc:vpc-0328f2e37ee84f423
+	volume:vol-000a8edf8b3a00efd
+	subnet:subnet-0f2084ccf58c139ef
+	security-group:sg-0fafd04c89eebe360
+	internet-gateway:igw-07bda0d446a6f68ec
+	volume:vol-03391d87d30c7ab0f
+	security-group:sg-059df88f8e6ef2e8c
+	route-table:rtb-06b94b62937ac7ccb
+	security-group:sg-0c33565506135af54
+	subnet:subnet-0bcdd55cb1a12f92c
+	security-group:sg-00c654becf3acd444
+	volume:vol-009c63fc155a2c0c0
+	subnet:subnet-045956f002184aebc
+volume:vol-000fafdba7df320a5	still has dependencies, will retry
+volume:vol-0ee52bf1d8fd85e77	still has dependencies, will retry
+volume:vol-000a8edf8b3a00efd	still has dependencies, will retry
+subnet:subnet-0bcdd55cb1a12f92c	still has dependencies, will retry
+subnet:subnet-0f2084ccf58c139ef	still has dependencies, will retry
+internet-gateway:igw-07bda0d446a6f68ec	still has dependencies, will retry
+volume:vol-03391d87d30c7ab0f	still has dependencies, will retry
+volume:vol-009c63fc155a2c0c0	still has dependencies, will retry
+security-group:sg-059df88f8e6ef2e8c	still has dependencies, will retry
+security-group:sg-0fafd04c89eebe360	still has dependencies, will retry
+subnet:subnet-045956f002184aebc	ok
+security-group:sg-0c33565506135af54	still has dependencies, will retry
+security-group:sg-0c4427fbea14127a7	still has dependencies, will retry
+security-group:sg-00c654becf3acd444	ok
+Not all resources deleted; waiting before reattempting deletion
+	dhcp-options:dopt-0fd6627e4641806e4
+	vpc:vpc-0328f2e37ee84f423
+	volume:vol-000a8edf8b3a00efd
+	subnet:subnet-0f2084ccf58c139ef
+	volume:vol-000fafdba7df320a5
+	security-group:sg-0fafd04c89eebe360
+	internet-gateway:igw-07bda0d446a6f68ec
+	volume:vol-03391d87d30c7ab0f
+	security-group:sg-059df88f8e6ef2e8c
+	security-group:sg-0c33565506135af54
+	subnet:subnet-0bcdd55cb1a12f92c
+	route-table:rtb-06b94b62937ac7ccb
+	volume:vol-009c63fc155a2c0c0
+	security-group:sg-0c4427fbea14127a7
+	volume:vol-0ee52bf1d8fd85e77
+volume:vol-0ee52bf1d8fd85e77	still has dependencies, will retry
+subnet:subnet-0f2084ccf58c139ef	still has dependencies, will retry
+internet-gateway:igw-07bda0d446a6f68ec	still has dependencies, will retry
+volume:vol-000fafdba7df320a5	still has dependencies, will retry
+volume:vol-03391d87d30c7ab0f	ok
+volume:vol-009c63fc155a2c0c0	ok
+volume:vol-000a8edf8b3a00efd	still has dependencies, will retry
+subnet:subnet-0bcdd55cb1a12f92c	still has dependencies, will retry
+security-group:sg-0c33565506135af54	ok
+security-group:sg-0c4427fbea14127a7	ok
+security-group:sg-0fafd04c89eebe360	still has dependencies, will retry
+security-group:sg-059df88f8e6ef2e8c	still has dependencies, will retry
+Not all resources deleted; waiting before reattempting deletion
+	subnet:subnet-0f2084ccf58c139ef
+	volume:vol-000fafdba7df320a5
+	vpc:vpc-0328f2e37ee84f423
+	volume:vol-000a8edf8b3a00efd
+	security-group:sg-0fafd04c89eebe360
+	internet-gateway:igw-07bda0d446a6f68ec
+	security-group:sg-059df88f8e6ef2e8c
+	route-table:rtb-06b94b62937ac7ccb
+	subnet:subnet-0bcdd55cb1a12f92c
+	volume:vol-0ee52bf1d8fd85e77
+	dhcp-options:dopt-0fd6627e4641806e4
+volume:vol-000fafdba7df320a5	ok
+volume:vol-000a8edf8b3a00efd	ok
+volume:vol-0ee52bf1d8fd85e77	ok
+subnet:subnet-0bcdd55cb1a12f92c	still has dependencies, will retry
+internet-gateway:igw-07bda0d446a6f68ec	ok
+security-group:sg-0fafd04c89eebe360	still has dependencies, will retry
+security-group:sg-059df88f8e6ef2e8c	ok
+subnet:subnet-0f2084ccf58c139ef	ok
+Not all resources deleted; waiting before reattempting deletion
+	security-group:sg-0fafd04c89eebe360
+	subnet:subnet-0bcdd55cb1a12f92c
+	route-table:rtb-06b94b62937ac7ccb
+	dhcp-options:dopt-0fd6627e4641806e4
+	vpc:vpc-0328f2e37ee84f423
+security-group:sg-0fafd04c89eebe360	ok
+subnet:subnet-0bcdd55cb1a12f92c	ok
+route-table:rtb-06b94b62937ac7ccb	ok
+vpc:vpc-0328f2e37ee84f423	ok
+dhcp-options:dopt-0fd6627e4641806e4	ok
+Deleted kubectl config for fleetman.k8s.local
+
+Deleted cluster: "fleetman.k8s.local"
+[ec2-user@ip-172-31-19-100 ~]$ 
+[ec2-user@ip-172-31-19-100 ~]$ 
+[ec2-user@ip-172-31-19-100 ~]$ 
+[ec2-user@ip-172-31-19-100 ~]$ Connection to 13.232.173.170 closed by remote host.
+Connection to 13.232.173.170 closed.
+Leelas-MacBook-Air:Kubernetes Leela$ 

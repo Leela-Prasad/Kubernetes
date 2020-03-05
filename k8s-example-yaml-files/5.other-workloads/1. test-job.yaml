@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: test-job
+spec: # Job
+  template:
+    spec: # Pod
+      containers:
+        - name: long-job
+          image: python:rc-slim
+          command: ["python"]
+          args: ["-c", "import time; print('starting'); time.sleep(30); print('done');"]
+      # Here RestartPolicy should be Never because once the job is completed then it 
+      # should not be triggered again. Default is Always.
+      restartPolicy: Never
+  # BackoffLimit indicates if container is terminated due to any reasons, then it will
+  # do a reattempt for 2 times.
+  backoffLimit: 2

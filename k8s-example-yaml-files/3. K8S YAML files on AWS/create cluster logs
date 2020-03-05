@@ -1,0 +1,474 @@
+[ec2-user@ip-172-31-19-100 ~]$ kops create cluster --zones ap-south-1a,ap-south-1b,ap-south-1c ${NAME}
+I0204 03:12:44.845314    3414 create_cluster.go:517] Inferred --cloud=aws from zone "ap-south-1a"
+I0204 03:12:44.892605    3414 subnets.go:184] Assigned CIDR 172.20.32.0/19 to subnet ap-south-1a
+I0204 03:12:44.892770    3414 subnets.go:184] Assigned CIDR 172.20.64.0/19 to subnet ap-south-1b
+I0204 03:12:44.892829    3414 subnets.go:184] Assigned CIDR 172.20.96.0/19 to subnet ap-south-1c
+I0204 03:12:45.987592    3414 create_cluster.go:1496] Using SSH public key: /home/ec2-user/.ssh/id_rsa.pub
+Previewing changes that will be made:
+
+I0204 03:12:47.386576    3414 apply_cluster.go:556] Gossip DNS: skipping DNS validation
+I0204 03:12:47.464730    3414 executor.go:103] Tasks: 0 done / 95 total; 43 can run
+I0204 03:12:48.426550    3414 executor.go:103] Tasks: 43 done / 95 total; 26 can run
+I0204 03:12:48.844766    3414 executor.go:103] Tasks: 69 done / 95 total; 22 can run
+I0204 03:12:48.902557    3414 executor.go:103] Tasks: 91 done / 95 total; 3 can run
+W0204 03:12:48.910265    3414 keypair.go:140] Task did not have an address: *awstasks.LoadBalancer {"Name":"api.fleetman.k8s.local","Lifecycle":"Sync","LoadBalancerName":"api-fleetman-k8s-local-tkmafs","DNSName":null,"HostedZoneId":null,"Subnets":[{"Name":"ap-south-1b.fleetman.k8s.local","ShortName":"ap-south-1b","Lifecycle":"Sync","ID":null,"VPC":{"Name":"fleetman.k8s.local","Lifecycle":"Sync","ID":null,"CIDR":"172.20.0.0/16","EnableDNSHostnames":true,"EnableDNSSupport":true,"Shared":false,"Tags":{"KubernetesCluster":"fleetman.k8s.local","Name":"fleetman.k8s.local","kubernetes.io/cluster/fleetman.k8s.local":"owned"}},"AvailabilityZone":"ap-south-1b","CIDR":"172.20.64.0/19","Shared":false,"Tags":{"KubernetesCluster":"fleetman.k8s.local","Name":"ap-south-1b.fleetman.k8s.local","SubnetType":"Public","kubernetes.io/cluster/fleetman.k8s.local":"owned","kubernetes.io/role/elb":"1"}},{"Name":"ap-south-1c.fleetman.k8s.local","ShortName":"ap-south-1c","Lifecycle":"Sync","ID":null,"VPC":{"Name":"fleetman.k8s.local","Lifecycle":"Sync","ID":null,"CIDR":"172.20.0.0/16","EnableDNSHostnames":true,"EnableDNSSupport":true,"Shared":false,"Tags":{"KubernetesCluster":"fleetman.k8s.local","Name":"fleetman.k8s.local","kubernetes.io/cluster/fleetman.k8s.local":"owned"}},"AvailabilityZone":"ap-south-1c","CIDR":"172.20.96.0/19","Shared":false,"Tags":{"KubernetesCluster":"fleetman.k8s.local","Name":"ap-south-1c.fleetman.k8s.local","SubnetType":"Public","kubernetes.io/cluster/fleetman.k8s.local":"owned","kubernetes.io/role/elb":"1"}},{"Name":"ap-south-1a.fleetman.k8s.local","ShortName":"ap-south-1a","Lifecycle":"Sync","ID":null,"VPC":{"Name":"fleetman.k8s.local","Lifecycle":"Sync","ID":null,"CIDR":"172.20.0.0/16","EnableDNSHostnames":true,"EnableDNSSupport":true,"Shared":false,"Tags":{"KubernetesCluster":"fleetman.k8s.local","Name":"fleetman.k8s.local","kubernetes.io/cluster/fleetman.k8s.local":"owned"}},"AvailabilityZone":"ap-south-1a","CIDR":"172.20.32.0/19","Shared":false,"Tags":{"KubernetesCluster":"fleetman.k8s.local","Name":"ap-south-1a.fleetman.k8s.local","SubnetType":"Public","kubernetes.io/cluster/fleetman.k8s.local":"owned","kubernetes.io/role/elb":"1"}}],"SecurityGroups":[{"Name":"api-elb.fleetman.k8s.local","Lifecycle":"Sync","ID":null,"Description":"Security group for api ELB","VPC":{"Name":"fleetman.k8s.local","Lifecycle":"Sync","ID":null,"CIDR":"172.20.0.0/16","EnableDNSHostnames":true,"EnableDNSSupport":true,"Shared":false,"Tags":{"KubernetesCluster":"fleetman.k8s.local","Name":"fleetman.k8s.local","kubernetes.io/cluster/fleetman.k8s.local":"owned"}},"RemoveExtraRules":["port=443"],"Shared":null,"Tags":{"KubernetesCluster":"fleetman.k8s.local","Name":"api-elb.fleetman.k8s.local","kubernetes.io/cluster/fleetman.k8s.local":"owned"}}],"Listeners":{"443":{"InstancePort":443,"SSLCertificateID":""}},"Scheme":null,"HealthCheck":{"Target":"SSL:443","HealthyThreshold":2,"UnhealthyThreshold":2,"Interval":10,"Timeout":5},"AccessLog":null,"ConnectionDraining":null,"ConnectionSettings":{"IdleTimeout":300},"CrossZoneLoadBalancing":{"Enabled":false},"SSLCertificateID":"","Tags":{"KubernetesCluster":"fleetman.k8s.local","Name":"api.fleetman.k8s.local","kubernetes.io/cluster/fleetman.k8s.local":"owned"}}
+I0204 03:12:49.002866    3414 executor.go:103] Tasks: 94 done / 95 total; 1 can run
+I0204 03:12:49.085584    3414 executor.go:103] Tasks: 95 done / 95 total; 0 can run
+Will create resources:
+  AutoscalingGroup/master-ap-south-1a.masters.fleetman.k8s.local
+  	Granularity         	1Minute
+  	LaunchConfiguration 	name:master-ap-south-1a.masters.fleetman.k8s.local
+  	MaxSize             	1
+  	Metrics             	[GroupDesiredCapacity, GroupInServiceInstances, GroupMaxSize, GroupMinSize, GroupPendingInstances, GroupStandbyInstances, GroupTerminatingInstances, GroupTotalInstances]
+  	MinSize             	1
+  	Subnets             	[name:ap-south-1a.fleetman.k8s.local]
+  	SuspendProcesses    	[]
+  	Tags                	{k8s.io/cluster-autoscaler/node-template/label/kops.k8s.io/instancegroup: master-ap-south-1a, k8s.io/role/master: 1, kops.k8s.io/instancegroup: master-ap-south-1a, Name: master-ap-south-1a.masters.fleetman.k8s.local, KubernetesCluster: fleetman.k8s.local}
+
+  AutoscalingGroup/nodes.fleetman.k8s.local
+  	Granularity         	1Minute
+  	LaunchConfiguration 	name:nodes.fleetman.k8s.local
+  	MaxSize             	2
+  	Metrics             	[GroupDesiredCapacity, GroupInServiceInstances, GroupMaxSize, GroupMinSize, GroupPendingInstances, GroupStandbyInstances, GroupTerminatingInstances, GroupTotalInstances]
+  	MinSize             	2
+  	Subnets             	[name:ap-south-1a.fleetman.k8s.local, name:ap-south-1b.fleetman.k8s.local, name:ap-south-1c.fleetman.k8s.local]
+  	SuspendProcesses    	[]
+  	Tags                	{kops.k8s.io/instancegroup: nodes, Name: nodes.fleetman.k8s.local, KubernetesCluster: fleetman.k8s.local, k8s.io/cluster-autoscaler/node-template/label/kops.k8s.io/instancegroup: nodes, k8s.io/role/node: 1}
+
+  DHCPOptions/fleetman.k8s.local
+  	DomainName          	ap-south-1.compute.internal
+  	DomainNameServers   	AmazonProvidedDNS
+  	Shared              	false
+  	Tags                	{kubernetes.io/cluster/fleetman.k8s.local: owned, Name: fleetman.k8s.local, KubernetesCluster: fleetman.k8s.local}
+
+  EBSVolume/a.etcd-events.fleetman.k8s.local
+  	AvailabilityZone    	ap-south-1a
+  	Encrypted           	false
+  	SizeGB              	20
+  	Tags                	{k8s.io/role/master: 1, kubernetes.io/cluster/fleetman.k8s.local: owned, Name: a.etcd-events.fleetman.k8s.local, KubernetesCluster: fleetman.k8s.local, k8s.io/etcd/events: a/a}
+  	VolumeType          	gp2
+
+  EBSVolume/a.etcd-main.fleetman.k8s.local
+  	AvailabilityZone    	ap-south-1a
+  	Encrypted           	false
+  	SizeGB              	20
+  	Tags                	{Name: a.etcd-main.fleetman.k8s.local, KubernetesCluster: fleetman.k8s.local, k8s.io/etcd/main: a/a, k8s.io/role/master: 1, kubernetes.io/cluster/fleetman.k8s.local: owned}
+  	VolumeType          	gp2
+
+  IAMInstanceProfile/masters.fleetman.k8s.local
+  	Shared              	false
+
+  IAMInstanceProfile/nodes.fleetman.k8s.local
+  	Shared              	false
+
+  IAMInstanceProfileRole/masters.fleetman.k8s.local
+  	InstanceProfile     	name:masters.fleetman.k8s.local id:masters.fleetman.k8s.local
+  	Role                	name:masters.fleetman.k8s.local
+
+  IAMInstanceProfileRole/nodes.fleetman.k8s.local
+  	InstanceProfile     	name:nodes.fleetman.k8s.local id:nodes.fleetman.k8s.local
+  	Role                	name:nodes.fleetman.k8s.local
+
+  IAMRole/masters.fleetman.k8s.local
+  	ExportWithID        	masters
+
+  IAMRole/nodes.fleetman.k8s.local
+  	ExportWithID        	nodes
+
+  IAMRolePolicy/masters.fleetman.k8s.local
+  	Role                	name:masters.fleetman.k8s.local
+
+  IAMRolePolicy/nodes.fleetman.k8s.local
+  	Role                	name:nodes.fleetman.k8s.local
+
+  InternetGateway/fleetman.k8s.local
+  	VPC                 	name:fleetman.k8s.local
+  	Shared              	false
+  	Tags                	{Name: fleetman.k8s.local, KubernetesCluster: fleetman.k8s.local, kubernetes.io/cluster/fleetman.k8s.local: owned}
+
+  Keypair/apiserver-aggregator
+  	Signer              	name:apiserver-aggregator-ca id:cn=apiserver-aggregator-ca
+  	Subject             	cn=aggregator
+  	Type                	client
+  	Format              	v1alpha2
+
+  Keypair/apiserver-aggregator-ca
+  	Subject             	cn=apiserver-aggregator-ca
+  	Type                	ca
+  	Format              	v1alpha2
+
+  Keypair/apiserver-proxy-client
+  	Signer              	name:ca id:cn=kubernetes
+  	Subject             	cn=apiserver-proxy-client
+  	Type                	client
+  	Format              	v1alpha2
+
+  Keypair/ca
+  	Subject             	cn=kubernetes
+  	Type                	ca
+  	Format              	v1alpha2
+
+  Keypair/etcd-clients-ca
+  	Subject             	cn=etcd-clients-ca
+  	Type                	ca
+  	Format              	v1alpha2
+
+  Keypair/etcd-manager-ca-events
+  	Subject             	cn=etcd-manager-ca-events
+  	Type                	ca
+  	Format              	v1alpha2
+
+  Keypair/etcd-manager-ca-main
+  	Subject             	cn=etcd-manager-ca-main
+  	Type                	ca
+  	Format              	v1alpha2
+
+  Keypair/etcd-peers-ca-events
+  	Subject             	cn=etcd-peers-ca-events
+  	Type                	ca
+  	Format              	v1alpha2
+
+  Keypair/etcd-peers-ca-main
+  	Subject             	cn=etcd-peers-ca-main
+  	Type                	ca
+  	Format              	v1alpha2
+
+  Keypair/kops
+  	Signer              	name:ca id:cn=kubernetes
+  	Subject             	o=system:masters,cn=kops
+  	Type                	client
+  	Format              	v1alpha2
+
+  Keypair/kube-controller-manager
+  	Signer              	name:ca id:cn=kubernetes
+  	Subject             	cn=system:kube-controller-manager
+  	Type                	client
+  	Format              	v1alpha2
+
+  Keypair/kube-proxy
+  	Signer              	name:ca id:cn=kubernetes
+  	Subject             	cn=system:kube-proxy
+  	Type                	client
+  	Format              	v1alpha2
+
+  Keypair/kube-scheduler
+  	Signer              	name:ca id:cn=kubernetes
+  	Subject             	cn=system:kube-scheduler
+  	Type                	client
+  	Format              	v1alpha2
+
+  Keypair/kubecfg
+  	Signer              	name:ca id:cn=kubernetes
+  	Subject             	o=system:masters,cn=kubecfg
+  	Type                	client
+  	Format              	v1alpha2
+
+  Keypair/kubelet
+  	Signer              	name:ca id:cn=kubernetes
+  	Subject             	o=system:nodes,cn=kubelet
+  	Type                	client
+  	Format              	v1alpha2
+
+  Keypair/kubelet-api
+  	Signer              	name:ca id:cn=kubernetes
+  	Subject             	cn=kubelet-api
+  	Type                	client
+  	Format              	v1alpha2
+
+  Keypair/master
+  	AlternateNames      	[100.64.0.1, 127.0.0.1, api.fleetman.k8s.local, api.internal.fleetman.k8s.local, kubernetes, kubernetes.default, kubernetes.default.svc, kubernetes.default.svc.cluster.local]
+  	Signer              	name:ca id:cn=kubernetes
+  	Subject             	cn=kubernetes-master
+  	Type                	server
+  	Format              	v1alpha2
+
+  LaunchConfiguration/master-ap-south-1a.masters.fleetman.k8s.local
+  	AssociatePublicIP   	true
+  	IAMInstanceProfile  	name:masters.fleetman.k8s.local id:masters.fleetman.k8s.local
+  	ImageID             	kope.io/k8s-1.15-debian-stretch-amd64-hvm-ebs-2019-09-26
+  	InstanceType        	c4.large
+  	RootVolumeSize      	64
+  	RootVolumeType      	gp2
+  	SSHKey              	name:kubernetes.fleetman.k8s.local-4c:85:15:40:fd:07:fc:9f:f2:d9:aa:6f:19:57:e6:d0 id:kubernetes.fleetman.k8s.local-4c:85:15:40:fd:07:fc:9f:f2:d9:aa:6f:19:57:e6:d0
+  	SecurityGroups      	[name:masters.fleetman.k8s.local]
+  	SpotPrice           	
+
+  LaunchConfiguration/nodes.fleetman.k8s.local
+  	AssociatePublicIP   	true
+  	IAMInstanceProfile  	name:nodes.fleetman.k8s.local id:nodes.fleetman.k8s.local
+  	ImageID             	kope.io/k8s-1.15-debian-stretch-amd64-hvm-ebs-2019-09-26
+  	InstanceType        	t2.medium
+  	RootVolumeSize      	128
+  	RootVolumeType      	gp2
+  	SSHKey              	name:kubernetes.fleetman.k8s.local-4c:85:15:40:fd:07:fc:9f:f2:d9:aa:6f:19:57:e6:d0 id:kubernetes.fleetman.k8s.local-4c:85:15:40:fd:07:fc:9f:f2:d9:aa:6f:19:57:e6:d0
+  	SecurityGroups      	[name:nodes.fleetman.k8s.local]
+  	SpotPrice           	
+
+  LoadBalancer/api.fleetman.k8s.local
+  	LoadBalancerName    	api-fleetman-k8s-local-tkmafs
+  	Subnets             	[name:ap-south-1b.fleetman.k8s.local, name:ap-south-1c.fleetman.k8s.local, name:ap-south-1a.fleetman.k8s.local]
+  	SecurityGroups      	[name:api-elb.fleetman.k8s.local]
+  	Listeners           	{443: {"InstancePort":443,"SSLCertificateID":""}}
+  	HealthCheck         	{"Target":"SSL:443","HealthyThreshold":2,"UnhealthyThreshold":2,"Interval":10,"Timeout":5}
+  	ConnectionSettings  	{"IdleTimeout":300}
+  	CrossZoneLoadBalancing	{"Enabled":false}
+  	SSLCertificateID    	
+  	Tags                	{Name: api.fleetman.k8s.local, KubernetesCluster: fleetman.k8s.local, kubernetes.io/cluster/fleetman.k8s.local: owned}
+
+  LoadBalancerAttachment/api-master-ap-south-1a
+  	LoadBalancer        	name:api.fleetman.k8s.local id:api.fleetman.k8s.local
+  	AutoscalingGroup    	name:master-ap-south-1a.masters.fleetman.k8s.local id:master-ap-south-1a.masters.fleetman.k8s.local
+
+  ManagedFile/etcd-cluster-spec-events
+  	Location            	backups/etcd/events/control/etcd-cluster-spec
+
+  ManagedFile/etcd-cluster-spec-main
+  	Location            	backups/etcd/main/control/etcd-cluster-spec
+
+  ManagedFile/fleetman.k8s.local-addons-bootstrap
+  	Location            	addons/bootstrap-channel.yaml
+
+  ManagedFile/fleetman.k8s.local-addons-core.addons.k8s.io
+  	Location            	addons/core.addons.k8s.io/v1.4.0.yaml
+
+  ManagedFile/fleetman.k8s.local-addons-dns-controller.addons.k8s.io-k8s-1.12
+  	Location            	addons/dns-controller.addons.k8s.io/k8s-1.12.yaml
+
+  ManagedFile/fleetman.k8s.local-addons-dns-controller.addons.k8s.io-k8s-1.6
+  	Location            	addons/dns-controller.addons.k8s.io/k8s-1.6.yaml
+
+  ManagedFile/fleetman.k8s.local-addons-dns-controller.addons.k8s.io-pre-k8s-1.6
+  	Location            	addons/dns-controller.addons.k8s.io/pre-k8s-1.6.yaml
+
+  ManagedFile/fleetman.k8s.local-addons-kube-dns.addons.k8s.io-k8s-1.12
+  	Location            	addons/kube-dns.addons.k8s.io/k8s-1.12.yaml
+
+  ManagedFile/fleetman.k8s.local-addons-kube-dns.addons.k8s.io-k8s-1.6
+  	Location            	addons/kube-dns.addons.k8s.io/k8s-1.6.yaml
+
+  ManagedFile/fleetman.k8s.local-addons-kube-dns.addons.k8s.io-pre-k8s-1.6
+  	Location            	addons/kube-dns.addons.k8s.io/pre-k8s-1.6.yaml
+
+  ManagedFile/fleetman.k8s.local-addons-kubelet-api.rbac.addons.k8s.io-k8s-1.9
+  	Location            	addons/kubelet-api.rbac.addons.k8s.io/k8s-1.9.yaml
+
+  ManagedFile/fleetman.k8s.local-addons-limit-range.addons.k8s.io
+  	Location            	addons/limit-range.addons.k8s.io/v1.5.0.yaml
+
+  ManagedFile/fleetman.k8s.local-addons-rbac.addons.k8s.io-k8s-1.8
+  	Location            	addons/rbac.addons.k8s.io/k8s-1.8.yaml
+
+  ManagedFile/fleetman.k8s.local-addons-storage-aws.addons.k8s.io-v1.15.0
+  	Location            	addons/storage-aws.addons.k8s.io/v1.15.0.yaml
+
+  ManagedFile/fleetman.k8s.local-addons-storage-aws.addons.k8s.io-v1.6.0
+  	Location            	addons/storage-aws.addons.k8s.io/v1.6.0.yaml
+
+  ManagedFile/fleetman.k8s.local-addons-storage-aws.addons.k8s.io-v1.7.0
+  	Location            	addons/storage-aws.addons.k8s.io/v1.7.0.yaml
+
+  ManagedFile/manifests-etcdmanager-events
+  	Location            	manifests/etcd/events.yaml
+
+  ManagedFile/manifests-etcdmanager-main
+  	Location            	manifests/etcd/main.yaml
+
+  Route/0.0.0.0/0
+  	RouteTable          	name:fleetman.k8s.local
+  	CIDR                	0.0.0.0/0
+  	InternetGateway     	name:fleetman.k8s.local
+
+  RouteTable/fleetman.k8s.local
+  	VPC                 	name:fleetman.k8s.local
+  	Shared              	false
+  	Tags                	{Name: fleetman.k8s.local, KubernetesCluster: fleetman.k8s.local, kubernetes.io/cluster/fleetman.k8s.local: owned, kubernetes.io/kops/role: public}
+
+  RouteTableAssociation/ap-south-1a.fleetman.k8s.local
+  	RouteTable          	name:fleetman.k8s.local
+  	Subnet              	name:ap-south-1a.fleetman.k8s.local
+
+  RouteTableAssociation/ap-south-1b.fleetman.k8s.local
+  	RouteTable          	name:fleetman.k8s.local
+  	Subnet              	name:ap-south-1b.fleetman.k8s.local
+
+  RouteTableAssociation/ap-south-1c.fleetman.k8s.local
+  	RouteTable          	name:fleetman.k8s.local
+  	Subnet              	name:ap-south-1c.fleetman.k8s.local
+
+  SSHKey/kubernetes.fleetman.k8s.local-4c:85:15:40:fd:07:fc:9f:f2:d9:aa:6f:19:57:e6:d0
+  	KeyFingerprint      	75:f7:b5:b8:d2:00:7a:e3:6b:e4:b9:11:1f:9e:43:42
+
+  Secret/admin
+
+  Secret/kube
+
+  Secret/kube-proxy
+
+  Secret/kubelet
+
+  Secret/system:controller_manager
+
+  Secret/system:dns
+
+  Secret/system:logging
+
+  Secret/system:monitoring
+
+  Secret/system:scheduler
+
+  SecurityGroup/api-elb.fleetman.k8s.local
+  	Description         	Security group for api ELB
+  	VPC                 	name:fleetman.k8s.local
+  	RemoveExtraRules    	[port=443]
+  	Tags                	{kubernetes.io/cluster/fleetman.k8s.local: owned, Name: api-elb.fleetman.k8s.local, KubernetesCluster: fleetman.k8s.local}
+
+  SecurityGroup/masters.fleetman.k8s.local
+  	Description         	Security group for masters
+  	VPC                 	name:fleetman.k8s.local
+  	RemoveExtraRules    	[port=22, port=443, port=2380, port=2381, port=4001, port=4002, port=4789, port=179]
+  	Tags                	{Name: masters.fleetman.k8s.local, KubernetesCluster: fleetman.k8s.local, kubernetes.io/cluster/fleetman.k8s.local: owned}
+
+  SecurityGroup/nodes.fleetman.k8s.local
+  	Description         	Security group for nodes
+  	VPC                 	name:fleetman.k8s.local
+  	RemoveExtraRules    	[port=22]
+  	Tags                	{Name: nodes.fleetman.k8s.local, KubernetesCluster: fleetman.k8s.local, kubernetes.io/cluster/fleetman.k8s.local: owned}
+
+  SecurityGroupRule/all-master-to-master
+  	SecurityGroup       	name:masters.fleetman.k8s.local
+  	SourceGroup         	name:masters.fleetman.k8s.local
+
+  SecurityGroupRule/all-master-to-node
+  	SecurityGroup       	name:nodes.fleetman.k8s.local
+  	SourceGroup         	name:masters.fleetman.k8s.local
+
+  SecurityGroupRule/all-node-to-node
+  	SecurityGroup       	name:nodes.fleetman.k8s.local
+  	SourceGroup         	name:nodes.fleetman.k8s.local
+
+  SecurityGroupRule/api-elb-egress
+  	SecurityGroup       	name:api-elb.fleetman.k8s.local
+  	CIDR                	0.0.0.0/0
+  	Egress              	true
+
+  SecurityGroupRule/https-api-elb-0.0.0.0/0
+  	SecurityGroup       	name:api-elb.fleetman.k8s.local
+  	CIDR                	0.0.0.0/0
+  	Protocol            	tcp
+  	FromPort            	443
+  	ToPort              	443
+
+  SecurityGroupRule/https-elb-to-master
+  	SecurityGroup       	name:masters.fleetman.k8s.local
+  	Protocol            	tcp
+  	FromPort            	443
+  	ToPort              	443
+  	SourceGroup         	name:api-elb.fleetman.k8s.local
+
+  SecurityGroupRule/icmp-pmtu-api-elb-0.0.0.0/0
+  	SecurityGroup       	name:api-elb.fleetman.k8s.local
+  	CIDR                	0.0.0.0/0
+  	Protocol            	icmp
+  	FromPort            	3
+  	ToPort              	4
+
+  SecurityGroupRule/master-egress
+  	SecurityGroup       	name:masters.fleetman.k8s.local
+  	CIDR                	0.0.0.0/0
+  	Egress              	true
+
+  SecurityGroupRule/node-egress
+  	SecurityGroup       	name:nodes.fleetman.k8s.local
+  	CIDR                	0.0.0.0/0
+  	Egress              	true
+
+  SecurityGroupRule/node-to-master-tcp-1-2379
+  	SecurityGroup       	name:masters.fleetman.k8s.local
+  	Protocol            	tcp
+  	FromPort            	1
+  	ToPort              	2379
+  	SourceGroup         	name:nodes.fleetman.k8s.local
+
+  SecurityGroupRule/node-to-master-tcp-2382-4000
+  	SecurityGroup       	name:masters.fleetman.k8s.local
+  	Protocol            	tcp
+  	FromPort            	2382
+  	ToPort              	4000
+  	SourceGroup         	name:nodes.fleetman.k8s.local
+
+  SecurityGroupRule/node-to-master-tcp-4003-65535
+  	SecurityGroup       	name:masters.fleetman.k8s.local
+  	Protocol            	tcp
+  	FromPort            	4003
+  	ToPort              	65535
+  	SourceGroup         	name:nodes.fleetman.k8s.local
+
+  SecurityGroupRule/node-to-master-udp-1-65535
+  	SecurityGroup       	name:masters.fleetman.k8s.local
+  	Protocol            	udp
+  	FromPort            	1
+  	ToPort              	65535
+  	SourceGroup         	name:nodes.fleetman.k8s.local
+
+  SecurityGroupRule/ssh-external-to-master-0.0.0.0/0
+  	SecurityGroup       	name:masters.fleetman.k8s.local
+  	CIDR                	0.0.0.0/0
+  	Protocol            	tcp
+  	FromPort            	22
+  	ToPort              	22
+
+  SecurityGroupRule/ssh-external-to-node-0.0.0.0/0
+  	SecurityGroup       	name:nodes.fleetman.k8s.local
+  	CIDR                	0.0.0.0/0
+  	Protocol            	tcp
+  	FromPort            	22
+  	ToPort              	22
+
+  Subnet/ap-south-1a.fleetman.k8s.local
+  	ShortName           	ap-south-1a
+  	VPC                 	name:fleetman.k8s.local
+  	AvailabilityZone    	ap-south-1a
+  	CIDR                	172.20.32.0/19
+  	Shared              	false
+  	Tags                	{KubernetesCluster: fleetman.k8s.local, kubernetes.io/cluster/fleetman.k8s.local: owned, SubnetType: Public, kubernetes.io/role/elb: 1, Name: ap-south-1a.fleetman.k8s.local}
+
+  Subnet/ap-south-1b.fleetman.k8s.local
+  	ShortName           	ap-south-1b
+  	VPC                 	name:fleetman.k8s.local
+  	AvailabilityZone    	ap-south-1b
+  	CIDR                	172.20.64.0/19
+  	Shared              	false
+  	Tags                	{Name: ap-south-1b.fleetman.k8s.local, KubernetesCluster: fleetman.k8s.local, kubernetes.io/cluster/fleetman.k8s.local: owned, SubnetType: Public, kubernetes.io/role/elb: 1}
+
+  Subnet/ap-south-1c.fleetman.k8s.local
+  	ShortName           	ap-south-1c
+  	VPC                 	name:fleetman.k8s.local
+  	AvailabilityZone    	ap-south-1c
+  	CIDR                	172.20.96.0/19
+  	Shared              	false
+  	Tags                	{Name: ap-south-1c.fleetman.k8s.local, KubernetesCluster: fleetman.k8s.local, kubernetes.io/cluster/fleetman.k8s.local: owned, SubnetType: Public, kubernetes.io/role/elb: 1}
+
+  VPC/fleetman.k8s.local
+  	CIDR                	172.20.0.0/16
+  	EnableDNSHostnames  	true
+  	EnableDNSSupport    	true
+  	Shared              	false
+  	Tags                	{Name: fleetman.k8s.local, KubernetesCluster: fleetman.k8s.local, kubernetes.io/cluster/fleetman.k8s.local: owned}
+
+  VPCDHCPOptionsAssociation/fleetman.k8s.local
+  	VPC                 	name:fleetman.k8s.local
+  	DHCPOptions         	name:fleetman.k8s.local
+
+Must specify --yes to apply changes
+
+Cluster configuration has been created.
+
+Suggestions:
+ * list clusters with: kops get cluster
+ * edit this cluster with: kops edit cluster fleetman.k8s.local
+ * edit your node instance group: kops edit ig --name=fleetman.k8s.local nodes
+ * edit your master instance group: kops edit ig --name=fleetman.k8s.local master-ap-south-1a
+
+Finally configure your cluster with: kops update cluster --name fleetman.k8s.local --yes
+
+[ec2-user@ip-172-31-19-100 ~]$ 
